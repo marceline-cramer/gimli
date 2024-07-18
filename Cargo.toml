@@ -21,7 +21,7 @@ rust-version = "1.60"
 
 [dependencies]
 fallible-iterator = { version = "0.3.0", default-features = false, optional = true }
-indexmap = { version = "2.0.0", optional = true }
+indexmap = { version = "2.0.0", default-features = false, optional = true }
 stable_deref_trait = { version = "1.1.0", default-features = false, optional = true }
 
 # Internal feature, only used when building as part of libstd, not part of the
@@ -40,7 +40,7 @@ read-all = ["read", "std", "fallible-iterator", "endian-reader"]
 endian-reader = ["read", "dep:stable_deref_trait"]
 fallible-iterator = ["dep:fallible-iterator"]
 write = ["dep:indexmap"]
-std = ["fallible-iterator?/std", "stable_deref_trait?/std"]
+std = ["fallible-iterator?/std", "stable_deref_trait?/std", "indexmap?/std"]
 default = ["read-all", "write"]
 
 # Internal feature, only used when building as part of libstd, not part of the
